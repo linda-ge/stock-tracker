@@ -1,8 +1,8 @@
-// grab the mongoose module
 var mongoose = require('mongoose');
 
 // define our stocks in portfolio
-var StockSchema = new mongoose.Schema({
+
+var stockSchema = new mongoose.Schema({
   ticker : {type: String,
             required: true},
   name : {type: String,
@@ -20,16 +20,10 @@ var StockSchema = new mongoose.Schema({
   change: {type: Number},
 });
 
-var PortfolioSchema = new mongoose.Schema({
-  username: {type: String,
-            required: true},
-  name: {type: String, required: true},
-  stocks: [StockSchema],
-  //{collection: 'Portfolio'}
-});
-
-
+module.exports = {
+  stockModel: mongoose.model(
+    'Stocks', stockSchema
+  ),
+  stockSchema: stockSchema,
+};
 // module.exports allows us to pass this to other files when it is called
-module.exports = mongoose.model(
-  'Portfolio', PortfolioSchema
-);
