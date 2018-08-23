@@ -98,6 +98,49 @@ module.exports = function(app) {
       });
     });
 
+  //Stock
+  //get all portfolios
+    app.get('/api/stocks', function(req, res) {
+      // use mongoose to get all nerds in the database
+      Stocks.find(function(err, stocks) {
+        if (err) {
+          res.send(err);
+        }
+        res.json(portfolios);
+      });
+    });
+
+    //get 1
+    app.get("/api/stocks/:stock_id", function(req, res) {
+      Stocks.findById(req.params.stock_id, function(err, nerd) {
+        if(err) {
+          res.send(err);
+        } else {
+          res.json(portfolios);
+        }
+      });
+    });
+
+    //post
+    app.post("/api/portfolios", function(req, res) {
+      Nerd.create(req.body, function(err, portfolios) {
+        if (err) {
+          res.send(err);
+        }
+        res.json(portfolios);
+      });
+    });
+
+    //delete
+    app.delete("/api/portfolios/:portfolio_id", function(req, res) {
+      Nerd.findByIdAndRemove(req.params.portfolio_id, function(err, portfolios) {
+        if (err) {
+          res.send(err);
+        }
+        res.json(portfolios);
+      });
+    });
+
 
     //frontend routes
     //route to handle all angular requests

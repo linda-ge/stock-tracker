@@ -18,6 +18,8 @@ var stockSchema = new mongoose.Schema({
               required: true},
   currPrice: {type: Number},
   change: {type: Number},
+  isOwned: {type: Boolean,
+            required: true}
 });
 
 module.exports = {
