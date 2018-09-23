@@ -1,7 +1,7 @@
 // grab the nerd model we just created
 var Nerd = require('./models/nerd');
 var Portfolio = require('./models/Portfolios');
-var Stocks = require('./models/Stocks').stockModel;
+var Stock = require('./models/Stocks').stockModel;
 function handleError(res, reason, message, code) {
   console.log("ERROR: " + reason);
   res.status(code || 500).json({"error": reason});
@@ -69,7 +69,7 @@ module.exports = function(app) {
 
     //get 1
     app.get("/api/portfolios/:portfolio_id", function(req, res) {
-      Portfolio.findById(req.params.portfolio_id, function(err, nerd) {
+      Portfolio.findById(req.params.portfolio_id, function(err, portfolios) {
         if(err) {
           res.send(err);
         } else {
@@ -80,7 +80,7 @@ module.exports = function(app) {
 
     //post
     app.post("/api/portfolios", function(req, res) {
-      Nerd.create(req.body, function(err, portfolios) {
+      Portfolio.create(req.body, function(err, portfolios) {
         if (err) {
           res.send(err);
         }
@@ -90,7 +90,7 @@ module.exports = function(app) {
 
     //delete
     app.delete("/api/portfolios/:portfolio_id", function(req, res) {
-      Nerd.findByIdAndRemove(req.params.portfolio_id, function(err, portfolios) {
+      Portfolio.findByIdAndRemove(req.params.portfolio_id, function(err, portfolios) {
         if (err) {
           res.send(err);
         }
@@ -99,48 +99,47 @@ module.exports = function(app) {
     });
 
   //Stock
-  //get all portfolios
+  //get all stocks
     app.get('/api/stocks', function(req, res) {
       // use mongoose to get all nerds in the database
-      Stocks.find(function(err, stocks) {
+      Stock.find(function(err, stocks) {
         if (err) {
           res.send(err);
         }
-        res.json(portfolios);
+        res.json(stocks);
       });
     });
 
     //get 1
     app.get("/api/stocks/:stock_id", function(req, res) {
-      Stocks.findById(req.params.stock_id, function(err, nerd) {
+      Stock.findById(req.params.stock_id, function(err, stocks) {
         if(err) {
           res.send(err);
         } else {
-          res.json(portfolios);
+          res.json(stocks);
         }
       });
     });
 
     //post
-    app.post("/api/portfolios", function(req, res) {
-      Nerd.create(req.body, function(err, portfolios) {
+    app.post("/api/stocks", function(req, res) {
+      Stock.create(req.body, function(err, stocks) {
         if (err) {
           res.send(err);
         }
-        res.json(portfolios);
+        res.json(stocks);
       });
     });
 
     //delete
-    app.delete("/api/portfolios/:portfolio_id", function(req, res) {
-      Nerd.findByIdAndRemove(req.params.portfolio_id, function(err, portfolios) {
+    app.delete("/api/stocks/:stock_id", function(req, res) {
+      Stock.findByIdAndRemove(req.params.stock_id, function(err, stocks) {
         if (err) {
           res.send(err);
         }
-        res.json(portfolios);
+        res.json(stocks);
       });
     });
-
 
     //frontend routes
     //route to handle all angular requests

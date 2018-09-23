@@ -1,0 +1,5 @@
+/node_modules
+/spec.md
+public/libs/bootstrap
+public/libs/font-awesome
+public/libs/animate.css
