@@ -16,8 +16,12 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
   .when('/geeks', {
     templateUrl: 'views/geek.html',
     controller: 'GeekController'
-  });
+  })
 
+  .when('/portfolio/:id', {
+    templateUrl: 'views/portfolio.html',
+    controller: 'PortfolioEditController'
+  });
   //make a form
   //.when('/nerds/:id')
 

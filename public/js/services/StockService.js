@@ -1,5 +1,5 @@
 angular.module('StockService', []).factory('Stocks', ['$http', function($http) {
-  return {
+
     // Get all stocks
     get : function() {
       return $http.get('/api/stocks');
@@ -15,6 +15,4 @@ angular.module('StockService', []).factory('Stocks', ['$http', function($http) {
        return $http.delete('/api/stocks/' + id);
     },
 
-
-  }
 }]);

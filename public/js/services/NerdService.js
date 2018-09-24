@@ -6,6 +6,10 @@ angular.module('NerdService', []).factory('Nerd', ['$http', function($http) {
       return $http.get('/api/nerds');
     },
 
+    get_by_id : function(id) {
+      return $http.get("/api/nerds/" + id)
+    },
+    
     // Post AND create a new nerd
     create : function(nerdData) {
       return $http.post('/api/nerds', nerdData);
