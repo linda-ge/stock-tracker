@@ -1,6 +1,13 @@
 <div class="jumbotron text-center">
-  <h1>User Portfolio</h1>
+  <h1>User Portfolios</h1>
 
   <p>{{ tagline }}</p>
-
+  <ul>
+    <div align="left">
+    <li ng-repeat="portfolio in portfolios">
+      <div><h5><a ng-href="/portfolio/{{portfolio._id}}">{{portfolio.name}}</a></h5>
+    </li>
+    </div>
+    <button type="button" class="btn btn-outline-primary" ng-click="makePortfolio()">Create a New Portfolio</button>
+  </ul>
 </div>

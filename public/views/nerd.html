@@ -2,5 +2,9 @@
   <h1>Sign Up/Log In</h1>
 
   <p> {{ tagline }} </p>
-
+  <ul>
+    <div align="left">
+    <li ng-repeat="nerd in nerds">{{nerd.username}} {{nerd._id}}</li>
+  </div>
+</ul>
 </div>

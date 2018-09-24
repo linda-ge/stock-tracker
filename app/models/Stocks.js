@@ -10,7 +10,6 @@ var stockSchema = new mongoose.Schema({
   shares: {type: Number,
           required: true,
           min: 0},
-  //should min be 0? can you short?
   purchasePrice: {type: Number,
                   required: true,
                   min: 0},

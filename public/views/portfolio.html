@@ -1,0 +1,15 @@
+<div class="jumbotron text-center">
+  <h1>View and Edit Portfolio</h1>
+
+  <p>{{ tagline }}</p>
+  <ul>
+    <div align="left">
+      <h4>Equities</h4>
+      <li ng-repeat="stock in portfolio.stocks">
+      <div>{{stock.name}} ({{stock.ticker}}) @ ${{stock.currPrice}}</div>
+      <div>profit (loss): {{stock.change}}</div>
+      </li>
+    </div>
+    <button type="button" class="btn btn-outline-primary" ng-click="makePortfolio()">Create a New Portfolio</button>
+  </ul>
+</div>
