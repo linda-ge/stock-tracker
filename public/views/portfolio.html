@@ -13,3 +13,56 @@
     <button type="button" class="btn btn-outline-primary" ng-click="makePortfolio()">Add a new holding</button>
   </ul>
 </div>
+
+<div ng-controller="PortfolioEditCtrl.js">
+  <form novalidate class="simple-form">
+    <label>Ticker: <input type="text" ng-model="stock.ticker" /></label><br />
+    <label>Shares: <input type="number" ng-model="stock.shares" /></label><br />
+    <input type="button" ng-click="reset()" value="Clear" />
+    <input type="submit" ng-click="update(user)" value="Buy" />
+  </form>
+  <pre>user = {{user | json}}</pre>
+  <pre>master = {{master | json}}</pre>
+</div>
+
+<!-- <script>
+  angular.module('formExample', [])
+    .controller('ExampleController', ['$scope', function($scope) {
+      $scope.master = {};
+
+      $scope.update = function(user) {
+        $scope.master = angular.copy(user);
+      };
+
+      $scope.reset = function() {
+        $scope.user = angular.copy($scope.master);
+      };
+
+      $scope.reset();
+    }]);
+</script> -->
+
+<!-- <script>
+  angular.module('formExample', [])
+    .controller('FormController', ['$scope', function($scope) {
+      $scope.userType = 'guest';
+    }]);
+</script>
+<style>
+ .my-form {
+   transition:all linear 0.5s;
+   background: transparent;
+ }
+ .my-form.ng-invalid {
+   background: red;
+ }
+</style>
+<form name="myForm" ng-controller="FormController" class="my-form">
+  userType: <input name="input" ng-model="userType" required>
+  <span class="error" ng-show="myForm.input.$error.required">Required!</span><br>
+  <code>userType = {{userType}}</code><br>
+  <code>myForm.input.$valid = {{myForm.input.$valid}}</code><br>
+  <code>myForm.input.$error = {{myForm.input.$error}}</code><br>
+  <code>myForm.$valid = {{myForm.$valid}}</code><br>
+  <code>myForm.$error.required = {{!!myForm.$error.required}}</code><br>
+ </form> -->
