@@ -10,37 +10,36 @@
       <div>profit/loss: {{stock.change | number: fractionSize}} per share at {{ stock.shares }} share(s)</div>
       </li>
     </div>
-    <button type="button" class="btn btn-outline-primary" ng-click="makePortfolio()">Add a new holding</button>
+    <div>Add a new holding</div>
+    <!-- <div ng-controller="PortfolioEditCtrl"> -->
+      <form novalidate class="simple-form">
+        <label>Ticker: <input type="text" ng-model="stock.ticker" /></label><br />
+        <label>Shares: <input type="number" ng-model="stock.shares" /></label><br />
+        <input type="button" ng-click="reset()" value="Clear" />
+        <input type="submit" ng-click="update(stock)" value="Buy" />
+      </form>
+      <pre>current price per share = ${{stock.currPrice}}</pre>
+    <!-- </div> -->
+    <!-- <button type="button" class="btn btn-outline-primary" ng-click="makePortfolio()">Add a new holding</button> -->
   </ul>
 </div>
 
-<div ng-controller="PortfolioEditCtrl.js">
-  <form novalidate class="simple-form">
-    <label>Ticker: <input type="text" ng-model="stock.ticker" /></label><br />
-    <label>Shares: <input type="number" ng-model="stock.shares" /></label><br />
-    <input type="button" ng-click="reset()" value="Clear" />
-    <input type="submit" ng-click="update(user)" value="Buy" />
-  </form>
-  <pre>user = {{user | json}}</pre>
-  <pre>master = {{master | json}}</pre>
-</div>
-
-<!-- <script>
-  angular.module('formExample', [])
-    .controller('ExampleController', ['$scope', function($scope) {
+<script>
+  angular.module('stock', [])
+    .controller('PortfolioEditCtrl', ['$scope', function($scope) {
       $scope.master = {};
 
-      $scope.update = function(user) {
-        $scope.master = angular.copy(user);
+      $scope.update = function(stock) {
+        $scope.master = angular.copy(stock);
       };
 
       $scope.reset = function() {
-        $scope.user = angular.copy($scope.master);
+        $scope.stock = angular.copy($scope.master);
       };
 
       $scope.reset();
     }]);
-</script> -->
+</script>
 
 <!-- <script>
   angular.module('formExample', [])
